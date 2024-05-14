@@ -36,10 +36,12 @@ public class UtilisateursServlets extends HttpServlet {
 
         if (utilisateurValide) {
             String role = utilisateursLogin.getRole(cin);
-
+            HttpSession session = request.getSession();
+            session.setAttribute("cin", cin);
+            session.setAttribute("role", role);
             switch (role) {
                 case "Citoyen":
-                    response.sendRedirect("citoyen.jsp");
+                    response.sendRedirect("Citoyen.jsp");
                     break;
                 case "Agent":
                     response.sendRedirect("Agent.jsp");
