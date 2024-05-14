@@ -5,13 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import com.reclamation.dao.UtilisateursLogin;
 
-/**
- * Servlet implementation class UtilisateursServlets
- */
 public class UtilisateursServlets extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -26,6 +25,7 @@ public class UtilisateursServlets extends HttpServlet {
             throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
+    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,9 +35,28 @@ public class UtilisateursServlets extends HttpServlet {
         boolean utilisateurValide = utilisateursLogin.verifierConnexion(cin, motDePasse);
 
         if (utilisateurValide) {
-            response.sendRedirect("sucess.jsp");
+            String role = utilisateursLogin.getRole(cin);
+
+            switch (role) {
+                case "Citoyen":
+                    response.sendRedirect("citoyen.jsp");
+                    break;
+                case "Agent":
+                    response.sendRedirect("Agent.jsp");
+                    break;
+                case "Administrateur":
+                    response.sendRedirect("Administrateur.jsp");
+                    break;
+                default:
+                    response.sendRedirect("index.jsp");
+                    break;
+            }
         } else {
-            response.sendRedirect("index.jsp");
+        	response.sendRedirect("index.jsp");
+
+        	HttpSession session = request.getSession();
+        	session.setAttribute("erreur", "CIN ou mot de passe incorrect");
+
         }
     }
 }
