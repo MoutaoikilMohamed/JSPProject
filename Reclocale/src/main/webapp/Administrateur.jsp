@@ -9,7 +9,6 @@
     <h1>Dashboard Admin</h1>
     
     <% 
-    // Récupérer les attributs de session
     String cin = (String) session.getAttribute("cin");
     String role = (String) session.getAttribute("role");
     %>
