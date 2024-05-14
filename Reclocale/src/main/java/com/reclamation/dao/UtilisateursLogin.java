@@ -29,6 +29,25 @@ public class UtilisateursLogin {
         }
         return conn;
     }
+    public String getRole(String CIN) {
+        String role = null;
+        try {
+            connection = getConnection();
+            String sql = "SELECT role FROM utilisateurs WHERE CIN = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, CIN);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                role = resultSet.getString("role");
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return role;
+    }
 
     public boolean verifierConnexion(String CIN, String motDePasse) {
         boolean utilisateurValide = false;
