@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap'); 
+  .navbar{
+     background: linear-gradient(to bottom right, #263314, #0d324d);
+    border-radius: 0;
+  }
+  body{
+font-family: 'Mukta', sans-serif;
+  }
+  
+  .thead{
+font-family: 'Mukta', sans-serif;
+  } 
+
+  .tr  {
+font-family: 'Mukta', sans-serif;
+  }
+
+
+  .panel-heading{
+
+ 
+  }
+
+  .panel-heading{
+       background-color: #afc8a4;
+     color: #385e82 ; 
+     height: 40px;
+
+  }

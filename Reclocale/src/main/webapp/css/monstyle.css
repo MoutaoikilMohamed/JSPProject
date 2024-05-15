@@ -1,0 +1,133 @@
+
+
+
+.margetop{
+    margin-top: 60px;
+}
+
+.style{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+    
+    
+}
+.body{
+    background: rgb(150,226,226);
+    
+    
+}
+.row{
+    background: white;
+    border-radius: 30px;
+    
+}
+img{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.mdp{
+    width: 100%;
+    position: relative;
+}
+
+.mdp input{
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 0;
+    padding-left: 10px;
+    border:1px solid #999;
+    border-radius: 5px;
+}
+.mdp i {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    font-size: 18px;
+    
+}
+.mdp i.active::before{
+    content:'\f070';
+    color: #5256ad;
+}
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+.label[href]:hover,
+.label[href]:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.label:empty {
+  display: none;
+}
+
+.label-default {
+  background-color: #999999;
+}
+
+.label-default[href]:hover,
+.label-default[href]:focus {
+  background-color: #808080;
+}
+
+.label-primary {
+  background-color: #428bca;
+}
+
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+  background-color: #3071a9;
+}
+
+.label-success {
+  background-color: #5cb85c;
+}
+
+.label-success[href]:hover,
+.label-success[href]:focus {
+  background-color: #449d44;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
+
+.label-info[href]:hover,
+.label-info[href]:focus {
+  background-color: #31b0d5;
+}
+
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+  background-color: #ec971f;
+}
+
+.label-danger {
+  background-color: #d9534f;
+}
+
+.label-danger[href]:hover,
+.label-danger[href]:focus {
+  background-color: #c9302c;
+}
+.element::before {
+  content: "\2639"; /* Code Unicode pour un symbole d'absence */
+  font-size: 20px;
+  color: red;
+}
