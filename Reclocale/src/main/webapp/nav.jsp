@@ -30,7 +30,7 @@
                
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="glyphicon glyphicon-user"></i> </a></li>
+                <li><a href="Citoyens"><i class="glyphicon glyphicon-user"></i> </a></li>
                 <li><a href="UtilisateursLogin"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Se déconnecter</a></li>
             </ul>
         </div>
