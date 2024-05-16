@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.reclamation.model.Reclamation" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,52 +47,52 @@
                             <thead>  
                                 <tr>  
                                     <th style="width: 10%;">ID</th> 
-                                    <th style="width: 10%;">Nom</th>
+                                    <th style="width: 10%;">Titre</th>
                                     <th style="width: 10%;">Type</th>                                    
                                     <th style="width: 15%;">Date de création</th>
                                     <th style="width: 15%;">Date de résolution</th>
                                     <th style="width: 30%;">Description</th>
                                     <th style="width: 5%;">Status</th>
-                                    <th class="text-center" style="width: 5%;">Modifier</th>  
-                                    <th class="text-center" style="width: 5%;">Supprimer</th>  
-                                    <th class="text-center" style="width: 5%;">Motif</th> 
+                                    <th class="text-center" style="width: 5%;">Motif</th>  
+                                    <th class="text-center" style="width: 5%;">Supprimer</th> 
                                 </tr> 
                             </thead>    
                             <tbody>
+                             <%
+                                List<Reclamation> reclamationscin = (List<Reclamation>) session.getAttribute("reclamationsListCIN");
+                                if (reclamationscin != null && !reclamationscin.isEmpty()) {
+                                    for (Reclamation reclamation : reclamationscin) {
+                                %>
                                 <tr>  
-                                    <td></td> 
-                                    <td></td> 
-                                    <td></td> 
-                                    <td></td> 
-                                    <td></td>  
-                                    <td></td>
-                                    <td></td>
+                                 <td><%= reclamation.getID() %></td>
+                                    <td><%= reclamation.getNom() %></td>
+                                    <td><%= reclamation.getType() %></td>
+                                    <td><%= reclamation.getDateCreation() %></td>
+                                    <td><%= reclamation.getDateResolution() %></td>
+                                    <td><%= reclamation.getDescription() %></td>
+                                    <td><%= reclamation.getStatus() %></td>
+                                    <td><%= reclamation.getMotif() %></td>
                                     <td>
                                         <center>
-                                            <button type="button" name="edit" id="edit" data-toggle="modal" data-target="#edit_data_Modal" class="btn btn-info btn-xs" style="background-color: #afc8a4; color: #385e82">
-                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            </button>
-                                        </center>
-                                    </td> 
-                                    <td>
-                                        <center>
-                                           
+
                                                 <button style="background-color: #afc8a4; color: #385e82" type="button" name="delete" id="delete" data-toggle="modal" data-target="#delete_data_Modal" class="btn btn-info btn-xs delete_data">
                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                 </button>
-                                           
+
                                         </center>
                                     </td> 
-                                    <td>
-                                        <center>
-                                            
-                                                <button type="button" name="motif" id="motif" data-toggle="modal" data-target="#motif_data_Modal"  class="btn btn-info btn-xs " style="background-color: #afc8a4; color: #385e82">
-                                                    <span class="glyphicon glyphicon-bell"></span>
-                                                </button>
-                                         
-                                        </center>
-                                    </td>
+                                
                                 </tr>  
+                                  <%
+                                    }
+                                } else {
+                                %>
+                                <tr>
+                                    <td colspan="8" class="text-center">Aucune réclamation trouvée</td>
+                                </tr>
+                                <%
+                                }
+                                %>
                             </tbody>
                         </table> 
                     </div>  
@@ -150,7 +153,7 @@
                         <label for="description">Description :</label>
                         <textarea name="description" class="form-control" id="description" rows="5" cols="5"></textarea>
                     </div>
-                  
+
                 </form>  
             </div>
             <div class="modal-footer">
@@ -189,7 +192,7 @@
             </div>
             <div class="modal-body">
                  <label>Motif</label>
-            
+
             </div>
         </div>
     </div>
