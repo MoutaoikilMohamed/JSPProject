@@ -8,13 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.reclamation.dao.UtilisateursLogin;
-
+import com.reclamation.model.Reclamation;
+import com.reclamation.model.Utilisateurs;
 public class UtilisateursServlets extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private UtilisateursLogin utilisateursLogin;
+   public UtilisateursLogin utilisateursLogin;
 
     public UtilisateursServlets() {
         super();
@@ -25,7 +27,6 @@ public class UtilisateursServlets extends HttpServlet {
             throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
-    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,9 +40,28 @@ public class UtilisateursServlets extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("cin", cin);
             session.setAttribute("role", role);
+            
+
+            List<Reclamation> reclamationsList = utilisateursLogin.getAllReclamations();
+
+            session.setAttribute("reclamationsList", reclamationsList);
+            
+        
+            
+            List<Utilisateurs> utilisateursList = utilisateursLogin.getAllUtilisateurs();
+
+            session.setAttribute("utilisateursList", utilisateursList);
+            
+            List<Utilisateurs> utilisateurCin = utilisateursLogin.getAllUtilisateursCin(cin) ;
+
+            session.setAttribute("utilisateurCin", utilisateurCin);
+            List<Reclamation> reclamationsListCIN = utilisateursLogin.getAllReclamationscin(cin);
+
+            session.setAttribute("reclamationsListCIN", reclamationsListCIN);
+            
             switch (role) {
                 case "Citoyen":
-                    response.sendRedirect("Citoyen.jsp");
+                    response.sendRedirect("citoyen.jsp");
                     break;
                 case "Agent":
                     response.sendRedirect("Agent.jsp");
@@ -54,11 +74,9 @@ public class UtilisateursServlets extends HttpServlet {
                     break;
             }
         } else {
-        	response.sendRedirect("index.jsp");
-
-        	HttpSession session = request.getSession();
-        	session.setAttribute("erreur", "CIN ou mot de passe incorrect");
-
+            HttpSession session = request.getSession();
+            session.setAttribute("erreur", "CIN ou mot de passe incorrect");
+            response.sendRedirect("index.jsp");
         }
     }
 }
