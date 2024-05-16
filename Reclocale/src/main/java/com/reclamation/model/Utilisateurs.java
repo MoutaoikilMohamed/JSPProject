@@ -1,30 +1,32 @@
 package com.reclamation.model;
 
+import java.sql.Date;
+
 public class Utilisateurs {
     private String CIN;
     private String nom;
     private String prenom;
     private String pwd;
-    private String dateNaissance;
+    private Date dateNaissance;
     private String province;
     private String numeroTelephone;
     private String role;
     private String status;
     private String service;
 
-    public Utilisateurs(String CIN, String nom, String prenom, String pwd, String dateNaissance,
-                        String province, String numeroTelephone, String role, String status, String service) {
-        this.CIN = CIN;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.pwd = pwd;
-        this.dateNaissance = dateNaissance;
-        this.province = province;
-        this.numeroTelephone = numeroTelephone;
-        this.role = role;
-        this.status = status;
-        this.service = service;
-    }
+    public Utilisateurs(String CIN, String nom, String prenom, String pwd, Date dateNaissance,
+            String province, String numeroTelephone, String role, String status, String service) {
+this.CIN = CIN;
+this.nom = nom;
+this.prenom = prenom;
+this.pwd = pwd;
+this.dateNaissance = dateNaissance;
+this.province = province;
+this.numeroTelephone = numeroTelephone;
+this.role = role;
+this.status = status;
+this.service = service;
+}
 
     public String getCIN() {
         return CIN;
@@ -58,11 +60,11 @@ public class Utilisateurs {
         this.pwd = pwd;
     }
 
-    public String getDateNaissance() {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(String dateNaissance) {
+    public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -121,4 +123,3 @@ public class Utilisateurs {
                 ", service='" + service + '\'' +
                 '}';
     }
-}
