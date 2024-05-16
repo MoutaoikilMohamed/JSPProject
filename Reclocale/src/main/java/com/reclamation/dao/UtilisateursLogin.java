@@ -188,6 +188,27 @@ public class UtilisateursLogin {
         }
         return list;
     }
+
+        public void insertUtilisateur(Utilisateurs utilisateur) {
+        String query = "INSERT INTO utilisateurs (CIN, nom, prenom, pwd, date_naissance, Ntel, province, role, status, Service) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, utilisateur.getCIN());
+            statement.setString(2, utilisateur.getNom());
+            statement.setString(3, utilisateur.getPrenom());
+            statement.setString(4, utilisateur.getPwd());
+            statement.setDate(5, utilisateur.getDateNaissance());
+            statement.setString(6, utilisateur.getNumeroTelephone());
+            statement.setString(7, utilisateur.getProvince());
+            statement.setString(8, utilisateur.getRole());
+            statement.setString(9, utilisateur.getStatus());
+            statement.setString(10, utilisateur.getService());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
  
 }
 
