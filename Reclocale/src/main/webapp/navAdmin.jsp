@@ -32,7 +32,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="glyphicon glyphicon-user"></i> Administrateur</a></li>
-                <li><a href="sedeconnecter"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Se déconnecter</a></li>
+                <li><a href="LogoutServlet"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Se déconnecter</a></li>
             </ul>
         </div>
     </div>
