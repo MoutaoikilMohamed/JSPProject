@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.reclamation.model.Reclamation" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,31 +36,53 @@
                 <div class="panel-body"> 
                     <br /><br />  
                     <div class="">  
-                        
                         <br>
                         <div id="reclamation_table" class="table-responsive">  
                             <table id="employee_data" class="table table-bordered"> 
                                 <thead>  
                                     <tr>  
-                                        <th style="width: 10%;">ID</th> 
+                                        <th style="width: 5%;">ID</th> 
                                         <th style="width: 10%;">Nom</th>
                                         <th style="width: 10%;">Type</th>                                    
-                                        <th style="width: 15%;">Date de création</th>
-                                        <th style="width: 15%;">Date de résolution</th>
-                                        <th style="width: 30%;">Description</th>
+                                        <th style="width: 10%;">Localisation</th>
+                                        <th style="width: 10%;">Date de création</th>
+                                        <th style="width: 10%;">Date de résolution</th>
+                                        <th style="width: 25%;">Description</th>
                                         <th style="width: 5%;">Status</th>
+                                        <th style="width: 5%;">CIN</th>
+                                        <th style="width: 10%;">Motif</th>
                                     </tr> 
                                 </thead>    
                                 <tbody>
-                                    <tr>  
-                                        <td></td> 
-                                        <td></td> 
-                                        <td></td> 
-                                        <td></td> 
-                                        <td></td>  
-                                        <td></td>
-                                        <td></td> 
-                                    </tr>  
+                                    <%
+                                    // Récupérer les attributs de session
+                                    List<Reclamation> reclamationsList = (List<Reclamation>) session.getAttribute("reclamationsList");
+
+                                    if (reclamationsList != null && !reclamationsList.isEmpty()) {
+                                        for (Reclamation reclamation : reclamationsList) {
+                                    %>
+                                        <tr>
+                                            <td><%= reclamation.getID() %></td>
+                                            <td><%= reclamation.getNom() %></td>
+                                            <td><%= reclamation.getType() %></td>
+                                            <td><%= reclamation.getLocalisation() %></td>
+                                            <td><%= reclamation.getDateCreation() %></td>
+                                            <td><%= reclamation.getDateResolution() %></td>
+                                            <td><%= reclamation.getDescription() %></td>
+                                            <td><%= reclamation.getStatus() %></td>
+                                            <td><%= reclamation.getCIN() %></td>
+                                            <td><%= reclamation.getMotif() %></td>
+                                        </tr>
+                                    <%
+                                        }
+                                    } else {
+                                    %>
+                                        <tr>
+                                            <td colspan="10" class="text-center">Aucune réclamation trouvée</td>
+                                        </tr>
+                                    <%
+                                    }
+                                    %>
                                 </tbody>
                             </table> 
                         </div>  
